@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PipeServices.PipeActions
+namespace PipeServices.PipeServices
 {
     public class EconomyService : IEconomyService
     {

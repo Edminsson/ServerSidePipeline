@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using PipeServices;
+using PipeServices.Extensions;
 using System;
 using System.Threading.Tasks;
 
@@ -32,14 +34,14 @@ namespace PipeConsole.Actions
         {
             PipeBuilder app = new PipeBuilder();
 
-            app.Use(async (model, next) =>
+            app.Add(async (model, next) =>
             {
-                model.Result.Add("First Own", "Wow");
+                model.Result.Add(PipeAction.Primero, "Wow");
                 await next();
             });
-            app.Use(async (model, next) =>
+            app.Add(async (model, next) =>
             {
-                model.Result.Add("Second Own", "Wow");
+                model.Result.Add(PipeAction.Segundo, "Wow");
                 await next();
             });
 

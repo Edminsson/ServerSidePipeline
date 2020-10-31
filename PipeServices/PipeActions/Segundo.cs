@@ -18,10 +18,10 @@ namespace PipeServices.PipeActions
         public async Task Handle(PipeModel model, Func<Task> next)
         {
             var economyResult = await economyService.GetEconomyResult();
-            model.Result.Add("EconomyResult", economyResult.ToString());
-            if (model.Result.ContainsKey("First Own"))
+            model.Result[PipeAction.EconomyValue] = economyResult.ToString();
+            if (model.Result.ContainsKey(PipeAction.Primero))
             {
-                model.Result.Add("Segund found primeros key", "First Own");
+                model.Result[PipeAction.PrimeroValue] = model.Result[PipeAction.Primero];
             }
             await kontrollService.Check(model, "Segundo");
             await next();

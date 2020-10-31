@@ -47,7 +47,7 @@ namespace PipeWorkerService
         {
             var appis = pipeBuilder.Build();
             var model = new PipeModel();
-            model.Result.Add("Start", "ExecuteAsync");
+            model.Result.Add(PipeAction.Start, "Worker");
             await appis(model);
             return model;
         }

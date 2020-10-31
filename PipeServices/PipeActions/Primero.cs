@@ -16,7 +16,7 @@ namespace PipeServices.PipeActions
         }
         public async Task Handle(PipeModel model, Func<Task> next)
         {
-            model.Result.Add("First Own", "Wow");
+            model.Result.Add(PipeAction.Primero, "Wow");
             await kontrollService.Check(model, "Primero");
             await next();
         }

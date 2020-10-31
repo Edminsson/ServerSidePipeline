@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PipeServices.PipeServices
@@ -10,12 +9,13 @@ namespace PipeServices.PipeServices
         {
             try
             {
-                model.Result.Add(source, "KontrollService");
+                model.Result[PipeAction.Control] = source;
             }
             catch(Exception)
             {
                 Console.WriteLine("problem med addande");
             }
+            model.Errors.Add(new Models.PipeError { ErrorType = Enums.ErrorType.Standard, ErrorMessage = source });
             Console.WriteLine("hej");
             await Task.Delay(200);
         }

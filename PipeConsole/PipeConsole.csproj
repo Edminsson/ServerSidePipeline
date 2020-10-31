@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PipeServices\PipeServices.csproj" />
+  </ItemGroup>
+
 </Project>

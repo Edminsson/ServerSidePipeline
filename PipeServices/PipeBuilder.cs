@@ -5,10 +5,6 @@ using System.Threading.Tasks;
 
 namespace PipeServices
 {
-    public class PipeModel
-    {
-        public Dictionary<string, string> Result { get; set; } = new Dictionary<string, string>();
-    }
     public delegate Task MyPipeDelegate(PipeModel model);
 
     public interface IPipeBuilder
@@ -31,11 +27,7 @@ namespace PipeServices
         {
             MyPipeDelegate app = model =>
             {
-                if (model.Result is null)
-                {
-                    model.Result = new Dictionary<string, string>();
-                }
-                model.Result.Add("Default", "PipeBuilder");
+                model.Result[PipeAction.End] = "PipeBuilder";
                 return Task.CompletedTask;
             };
 
